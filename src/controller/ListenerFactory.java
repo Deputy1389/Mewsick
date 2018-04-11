@@ -7,6 +7,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import javax.swing.JOptionPane;
 import model.SongQueue;
+import view.MewsickFrame;
 import model.Song;
 
 /**
@@ -18,14 +19,14 @@ import model.Song;
 public class ListenerFactory
 {
 	// the window whose view we are making listeners for.
-	private final JukeboxStartGUI window;
+	private final MewsickFrame window;
 
 	/**
 	 * Constructs a factory for the given window's view.
 	 * 
 	 * @param window The window whose view we will be using.
 	 */
-	public ListenerFactory(JukeboxStartGUI window)
+	public ListenerFactory(MewsickFrame window)
 	{
 		this.window = window;
 	}
@@ -141,35 +142,42 @@ public class ListenerFactory
 		@Override
 		public void windowClosing(WindowEvent e)
 		{
-			String msg = "Would you like to save before closing?";
-			int result = confirmDialog(msg);
-			if (result == JOptionPane.YES_OPTION)
-			{
-				ControlCoord.getInstance().getModel().save();
-				System.exit(0);
-			}
-			if (result == JOptionPane.NO_OPTION)
-			{
-				System.exit(0);
-			}
+			ControlCoord.getInstance().getModel().save();
+			System.exit(0);
+			
+//			String msg = "Would you like to save before closing?";
+//			int result = confirmDialog(msg);
+//			if (result == JOptionPane.YES_OPTION)
+//			{
+//				ControlCoord.getInstance().getModel().save();
+//				System.exit(0);
+//			}
+//			if (result == JOptionPane.NO_OPTION)
+//			{
+//				System.exit(0);
+//			}
 		}
 
 		// Ask if we should load data
 		@Override
 		public void windowOpened(WindowEvent e)
 		{
-			String msg = "Would you like to use the previous save?";
-			int result = confirmDialog(msg);
-			if (result == JOptionPane.YES_OPTION)
-			{
-				ControlCoord coord = ControlCoord.getInstance();
-				coord.getModel().load();
-				coord.getSongController().addSong(null);
-			}
-			if (result == JOptionPane.CANCEL_OPTION)
-			{
-				System.exit(0);
-			}
+			ControlCoord coord = ControlCoord.getInstance();
+			coord.getModel().load();
+			coord.getSongController().addSong(null);
+			
+//			String msg = "Would you like to use the previous save?";
+//			int result = confirmDialog(msg);
+//			if (result == JOptionPane.YES_OPTION)
+//			{
+//				ControlCoord coord = ControlCoord.getInstance();
+//				coord.getModel().load();
+//				coord.getSongController().addSong(null);
+//			}
+//			if (result == JOptionPane.CANCEL_OPTION)
+//			{
+//				System.exit(0);
+//			}
 		}
 
 		/**

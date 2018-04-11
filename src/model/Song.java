@@ -13,8 +13,6 @@ import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.Tag;
 import org.jaudiotagger.tag.TagException;
 
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 
 
 public class Song implements Serializable{

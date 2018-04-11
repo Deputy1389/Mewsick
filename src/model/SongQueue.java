@@ -109,8 +109,8 @@ public class SongQueue implements Serializable, TableModel, ListModel<Song> {
 		}
 		catch (IOException ioe)
 		{
-			System.err.println("Writing ReadableSongQueue objects failed");
-			ioe.printStackTrace();
+			//System.err.println("Writing SongQueue objects failed");
+			//ioe.printStackTrace();
 		}
 	}
 	
@@ -133,8 +133,8 @@ public class SongQueue implements Serializable, TableModel, ListModel<Song> {
 		}
 		catch (Exception e)
 		{
-			System.err.println("Reading ReadableSongQueue objects failed");
-			e.printStackTrace();
+			//System.err.println("Reading SongQueue objects failed");
+			//e.printStackTrace();
 		}
 	}
 
