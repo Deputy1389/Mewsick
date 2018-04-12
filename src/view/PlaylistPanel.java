@@ -34,7 +34,7 @@ public class PlaylistPanel extends JPanel {
 		
 		playlist = new JList<Song>(songs);
 		JScrollPane pane = new JScrollPane(playlist);	
-		pane.setPreferredSize(new Dimension(600, 400));
+		//pane.setPreferredSize(new Dimension(600, 400));
 		playlistPanel.add(pane, BorderLayout.CENTER);
 		
 		JLabel label = new JLabel("Playlist");

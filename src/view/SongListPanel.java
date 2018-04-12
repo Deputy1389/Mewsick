@@ -42,7 +42,6 @@ public class SongListPanel extends JPanel
 	public SongListPanel(ListenerFactory factory)
 	{
 		Mewsic model = ControlCoord.getInstance().getModel();
-		
 		setLayout(new BorderLayout());
 		setupSongTable(factory);
 	}
@@ -58,23 +57,28 @@ public class SongListPanel extends JPanel
 		JPanel tablePanel = new JPanel();
 		
 		songLibTable = new JTable(lib);
+		songLibTable.setFillsViewportHeight(true);
 		RowSorter<TableModel> rs = new TableRowSorter<TableModel>(lib);
 		songLibTable.setRowSorter(rs);
-
+		
+		songLibTable.setFillsViewportHeight(true);
+		
 		JScrollPane pane = new JScrollPane(songLibTable);
 		int width = songLibTable.getPreferredSize().width + 200;
 		int height = songLibTable.getRowHeight() * lib.getRowCount() + 1;
 		
-		pane.setPreferredSize(new Dimension(600, 900));
+		//pane.setPreferredSize(new Dimension(600, 900));
 		
 		tablePanel.add(pane);
 		
-		add(tablePanel, BorderLayout.EAST);
+		
+		add(tablePanel, BorderLayout.CENTER);
 		
 		JButton button = new JButton("Add to playlist");
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.add(button);
-		add(buttonPanel, BorderLayout.CENTER);
+		//add(buttonPanel, BorderLayout.WEST);
+		
 		SongGetter songGetter = () ->
 		{
 			int row = songLibTable.getSelectedRow();
@@ -88,9 +92,4 @@ public class SongListPanel extends JPanel
 		};
 		button.addActionListener(factory.makeSongListener(songGetter));
 	}
-
-	/**
-	 * Creates the JList that displays the current playlist
-	 */
-	
 }

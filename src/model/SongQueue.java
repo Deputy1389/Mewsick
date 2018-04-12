@@ -25,6 +25,8 @@ public class SongQueue implements Serializable, TableModel, ListModel<Song> {
 	// All of our data, stored as a queue
 	private Queue<Song> queue;
 	
+	private Queue<Song> reverse;
+	
 	// stores listeners
 	private final ArrayList<ListDataListener> listeners = new ArrayList<ListDataListener>();
 	
@@ -36,6 +38,7 @@ public class SongQueue implements Serializable, TableModel, ListModel<Song> {
 		LinkedList<Song> linkedList = new LinkedList<Song>();
 		list = linkedList;
 		queue = linkedList;
+		reverse = new LinkedList<Song>();
 	}
 	
 	/**
@@ -57,6 +60,7 @@ public class SongQueue implements Serializable, TableModel, ListModel<Song> {
 	public Song removeFromQueue()
 	{
 		Song ret = queue.remove();
+		reverse.add(ret);
 		notifyListeners();
 		return ret;
 	}

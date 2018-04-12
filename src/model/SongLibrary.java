@@ -123,11 +123,11 @@ public class SongLibrary implements Serializable, TableModel {
 		return Integer.class;
 	}
 	
-	// 3 columns: Artist, Title, Length
+	// 4 columns: Song, Artist, Album, Time
 	@Override
 	public int getColumnCount()
 	{
-		return 3;
+		return 4;
 	}
 	
 	// Get the name for each column
@@ -136,11 +136,11 @@ public class SongLibrary implements Serializable, TableModel {
 	{
 		if (index == 0)
 		{
-			return "Artist";
-		}
-		else if (index == 1)
-		{
 			return "Song";
+		}else if(index == 1){
+			return "Artist";
+		}else if(index == 2){
+			return "Album";
 		}
 		return "Seconds";
 	}
